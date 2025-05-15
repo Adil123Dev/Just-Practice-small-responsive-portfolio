@@ -1,0 +1,304 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+*::selection{
+    color: white;
+    background-color: green;
+}
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
+}
+
+#_navbar {
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    width: 100%;
+background-color: white;
+
+    position: fixed;
+    border-bottom: 5px solid #dadada;
+}
+
+div.logo>img {
+    width: 90px;
+    border-radius: 50%;
+    margin: 0.5rem 4rem;
+    padding: 0.2rem 0.6rem;
+}
+
+#real_links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2.2rem;
+    padding-right: 35vw;
+    gap: 1.7rem;
+    font-size: large;
+}
+
+ul>li {
+    list-style: none;
+}
+
+ul>li>a {
+    color: black;
+    text-decoration: none;
+}
+
+#icon_button {
+    width: 40px;
+    display: none;
+}
+main{
+    height: calc(100% - 100px);
+    width:100%;
+}
+ #Home{
+        height:100%;
+        width: 100%;
+        background-color: burlywood;
+        display: flex;
+    }
+    #home1{
+         height: 100%;
+         width: 50%;
+         display: flex;
+         flex-wrap: wrap;
+         align-items: center;
+         justify-content: center;
+    }
+    #home2{
+         height: 100%;
+         width: 50%;
+        display: flex;
+         align-items: center;
+         justify-content: center;
+    }
+    #home2>img{
+        width: 100%;
+        height: 60%;
+        border: none;
+        
+    }
+    #About{
+        width: 100%;
+        height: 100%;
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: xx-large;
+        padding: 40px;
+        flex-wrap: wrap;
+        overflow: none;
+        flex-direction: column;
+        gap: 4rem;
+        background-color: bisque; 
+    }
+        #About>p{
+            padding: 20px;
+        }
+     #Skills{
+        font-size: x-large;
+        text-align: justify;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: wheat;
+        flex-direction: column;
+     }
+     h3::before{
+        content:"WELCOME";
+        color: red;
+     }
+     #Project{
+        font-size: larger;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 2rem;
+        justify-content: center;
+        align-items: center;
+         background-color: bisque; 
+     }
+     #Experience{
+    font-size: x-large;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    width: 100%;
+    height: 100%;
+     background-color: bisque; 
+     }
+    #Contact{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        font-size: larger;
+        font-weight: bold;
+        width: 100%;
+    height: 100%;
+     background-color: bisque;
+     margin-top: 3rem; 
+    }
+    #Contact>input{
+        font-size: larger;
+        color: green;
+        outline: none;
+        border: 2px solid green;
+    }
+    #Contact>input:active{
+        box-shadow: 2px 2px 2px white;
+        color: red;
+
+    }
+   #Contact>button{
+    padding: 1rem;
+    font-weight: bold;
+    font-size: large;
+       color: green;
+   background-color: white;
+    border-radius: 1rem;
+  
+   }
+   #Contact>button:hover{
+  background-color: green;
+    color: white;
+   }
+   #Blog{
+    width: 100%;
+    height: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   font-size: larger;
+    background-color: bisque; 
+    
+   }
+
+@media (max-width:700px) {
+    body {
+        background-color: wheat;
+        color: black;
+
+    }
+
+    #_navbar {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-bottom: none;
+        background-color: wheat;
+        margin-top: 8rem;
+        margin-bottom: 14rem;
+        position: relative;
+    }
+
+
+    #real_links {
+        flex-direction: column;
+        margin-left: 4rem;
+        display: none;
+        
+    }
+
+    div.logo>img {
+        margin-top: 5rem;
+    }
+
+    .links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+    }
+
+    ul>li>a {
+        color: black;
+
+    }
+
+    #icon_button {
+        display: flex;
+        width: 40px;
+    }
+
+    ul>li>a:hover {
+        color: lightblue;
+    }
+    main{
+        width: 100%;
+        height: 40%;
+    }
+
+    #Home{
+        height:100%;
+        padding: 1rem;
+        width: 100%;
+        background-color:transparent;
+        display: flex;
+        flex-direction: row;
+    }
+    #home1{
+         height: 100%;
+         width: 100%;
+    }
+    #home2{
+         height: 100%;
+         width: 100%;
+
+    }
+    #home2>img{
+        width: 100%;
+        height:40%;
+        border: none;
+        
+    }
+    #About{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-size: large;
+        margin:0 auto;   
+        background-color:wheat;
+        flex-wrap: wrap; }
+        #About>p{
+            padding: 2px;
+        }
+       
+        #Skills{
+            margin-top: 8rem;
+            font-size: larger;
+            color:black;
+            background-color: wheat;
+            text-align: justify;
+             margin-top: 9rem;
+        }
+        #Skills>h1{
+            text-align: center;
+            background-color: white;
+            color: green;
+                    
+            }
+         #Blog{
+            font-size: smaller;
+            text-align: center;
+    
+         }        
+
+}
