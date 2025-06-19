@@ -1,0 +1,608 @@
+# Responsive Portfolio Theme
+
+<!-- Here's a clean, responsive portfolio theme using HTML, CSS, and a bit of JavaScript. This design adapts to all screen sizes and includes key portfolio sections. -->
+
+## HTML Structure
+
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* CSS will go here */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --accent-color: #e74c3c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        /* Skills Section */
+        .skills {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .skills .section-title {
+            color: white;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-card i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover .project-img img {
+            transform: scale(1.1);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-info p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .contact .section-title {
+            color: white;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            height: 150px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .social-links {
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--secondary-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: left 0.3s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .skill-card {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Portfolio</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hi, I'm MUHAMMAD ADIL TAHIR</h1>
+                <p>A passionate Frontend Developer creating beautiful, functional, and Responsve Websites</p>
+                <a href="#projects" class="btn">View My Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="data:image/jpeg;base64,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" alt="Profile Image">
+                </div>
+                <div class="about-text">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
+                    <p>Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere.</p>
+                    <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet.</p>
+                    <a href="#" class="btn">Download Resume</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Web Development</h3>
+                    <p>HTML, CSS, JavaScript, React, Node.js</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>UI/UX Design</h3>
+                    <p>Wireframing, Prototyping, User Research</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Development</h3>
+                    <p>React Native, Flutter, iOS & Android</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects-container">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Project 1">
+                    </div>
+                    <div class="project-info">
+                        <h3>E-commerce Website</h3>
+                        <p>A fully responsive e-commerce platform with cart functionality and payment integration.</p>
+                        <a href="#" class="btn">View Project</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Project 2">
+                    </div>
+                    <div class="project-info">
+                        <h3>Task Management App</h3>
+                        <p>A productivity app for managing tasks with drag-and-drop functionality and team collaboration.</p>
+                        <a href="#" class="btn">View Project</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1555421689-3f034debb7a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Project 3">
+                    </div>
+                    <div class="project-info">
+                        <h3>Health & Fitness Tracker</h3>
+                        <p>An app that tracks workouts, nutrition, and health metrics with data visualization.</p>
+                        <a href="#" class="btn">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 My Portfolio. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add shadow to header on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 10px rgba(0,0,0,0.2)';
+            } else {
+                header.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+## Key Features of This Portfolio Theme:
+
+1. *Fully Responsive Design*:
+   - Adapts to all screen sizes (desktop, tablet, mobile)
+   - Mobile-friendly navigation with hamburger menu
+   - Flexible grid layouts for projects and skills
+
+2. *Modern UI Elements*:
+   - Clean, minimalist design
+   - Smooth hover effects and transitions
+   - Card-based layout for projects and skills
+
+3. *Complete Sections*:
+   - Hero section with call-to-action
+   - About me section with image
+   - Skills showcase
+   - Project gallery
+   - Contact form
+   - Footer with social links
+
+4. *Interactive Features*:
+   - Smooth scrolling navigation
+   - Mobile menu toggle
+   - Dynamic header shadow on scroll
+
+5. *Performance Optimized*:
+   - CSS included directly in HTML for simplicity
+   - Minimal JavaScript
+   - Uses Font Awesome for icons
+
+## How to Customize:
+
+1. Replace placeholder images with your own
+2. Update the text content with your information
+3. Change the color scheme by modifying the CSS variables
+4. Add your real projects to the projects section
+5. Update the social media links in the footer
+
+This theme provides a solid foundation that you can build upon with your own personal style and content.
